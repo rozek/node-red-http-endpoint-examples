@@ -1,5 +1,6 @@
 {
   ".manifest":"application/manifest+json",
+  ".html":"text/html",
 
   ".aac":"audio/aac",
   ".abw":"application/x-abiword",
