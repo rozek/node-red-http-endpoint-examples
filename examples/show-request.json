@@ -1,0 +1,167 @@
+[
+    {
+        "id": "3b19c11ce044e751",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "show Request on Console (at /show-request)",
+        "info": "",
+        "x": 190,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "6ef2072a8470ed71",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "show-request",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 300,
+        "wires": [
+            [
+                "7860b328926aa62d",
+                "1081fc61bdcdf351"
+            ]
+        ]
+    },
+    {
+        "id": "a1cc7b1b1831f5cd",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "",
+        "statusCode": "204",
+        "headers": {},
+        "x": 520,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "1e995a639261be26",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "show-request",
+        "method": "post",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "7860b328926aa62d",
+                "1081fc61bdcdf351"
+            ]
+        ]
+    },
+    {
+        "id": "bedb272dbd0bab27",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "show-request",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 380,
+        "wires": [
+            [
+                "7860b328926aa62d",
+                "1081fc61bdcdf351"
+            ]
+        ]
+    },
+    {
+        "id": "cc3dd3e662f6769f",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "show-request",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 420,
+        "wires": [
+            [
+                "7860b328926aa62d",
+                "1081fc61bdcdf351"
+            ]
+        ]
+    },
+    {
+        "id": "b01e9d1db5485fc7",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "show-request",
+        "method": "patch",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 460,
+        "wires": [
+            [
+                "7860b328926aa62d",
+                "1081fc61bdcdf351"
+            ]
+        ]
+    },
+    {
+        "id": "7860b328926aa62d",
+        "type": "debug",
+        "z": "4730a3973976294e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "1081fc61bdcdf351",
+        "type": "change",
+        "z": "4730a3973976294e",
+        "name": "create Response",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 400,
+        "wires": [
+            [
+                "a1cc7b1b1831f5cd"
+            ]
+        ]
+    },
+    {
+        "id": "02625fa57b810b92",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "Node-RED does not like \"null\" responses",
+        "info": "",
+        "x": 320,
+        "y": 500,
+        "wires": []
+    }
+]
