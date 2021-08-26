@@ -1,0 +1,59 @@
+[
+    {
+        "id": "a0cb99c78c0317de",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "File Upload (at /file-upload)",
+        "info": "",
+        "x": 790,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "5c23c162fc24aea2",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1160,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "c3d4c30f8b61ba9e",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "file-upload",
+        "method": "post",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 760,
+        "y": 940,
+        "wires": [
+            [
+                "8bc1342748eefbfe"
+            ]
+        ]
+    },
+    {
+        "id": "8bc1342748eefbfe",
+        "type": "function",
+        "z": "4730a3973976294e",
+        "name": "create Response",
+        "func": "msg.payload = (\n  'File:      \"' + msg.req.files[0].originalname + '\"\\n' +\n  'MIME-Type: \"' + msg.req.files[0].mimetype + '\"'\n)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 940,
+        "wires": [
+            [
+                "5c23c162fc24aea2"
+            ]
+        ]
+    }
+]
