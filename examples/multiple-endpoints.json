@@ -1,0 +1,132 @@
+[
+    {
+        "id": "10dca77eabe7e005",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "multiple Endpoints matching the same URL (at /clash)",
+        "info": "",
+        "x": 1540,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "f2b4f5498759ad69",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "clash/specific-file",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 1440,
+        "y": 920,
+        "wires": [
+            [
+                "2aa1dc66c472d9cb"
+            ]
+        ]
+    },
+    {
+        "id": "2aa1dc66c472d9cb",
+        "type": "change",
+        "z": "4730a3973976294e",
+        "name": "create Response",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "specific response",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1670,
+        "y": 920,
+        "wires": [
+            [
+                "7a4ea35b003c7300"
+            ]
+        ]
+    },
+    {
+        "id": "b226fd64fdf3fadb",
+        "type": "change",
+        "z": "4730a3973976294e",
+        "name": "create Response",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "generic response",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1670,
+        "y": 860,
+        "wires": [
+            [
+                "c4d7c5cf7ba93079"
+            ]
+        ]
+    },
+    {
+        "id": "c4d7c5cf7ba93079",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1860,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "7a4ea35b003c7300",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1860,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "f9fbb2275dfd43a6",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "clash/:any(*)",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 1430,
+        "y": 860,
+        "wires": [
+            [
+                "b226fd64fdf3fadb"
+            ]
+        ]
+    },
+    {
+        "id": "a5a8e36543590405",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "but only one will be triggered",
+        "info": "",
+        "x": 1780,
+        "y": 980,
+        "wires": []
+    }
+]
