@@ -58,7 +58,13 @@ Import the [query handling example](examples/query-handling.json), "deploy" and 
 
 ### Setting HTTP Status Codes ###
 
+An important part of an HTTP response is its [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) which informs the client about success or failure and - if the request failed - the reason for failure.
+
+Node-RED allows the status code of a response to be explicitly set. This example combines this feature with URL placeholders and responds an incoming request with the status code it contains.
+
 ![](examples/http-status-codes.png)
+
+Import the [status code example](examples/http-status-codes.json), "deploy" and use the included Postman collection to send requests for different status codes to `{{BaseURL}}/status-code`
 
 ### Error Handling ###
 
@@ -83,3 +89,7 @@ Import the [query handling example](examples/query-handling.json), "deploy" and 
 ### Multiple Endpoints matching the same URL ###
 
 ![](examples/multiple-endpoints.png)
+
+## License ##
+
+[MIT License](LICENSE.md)
