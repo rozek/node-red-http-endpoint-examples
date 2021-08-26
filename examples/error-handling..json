@@ -1,0 +1,177 @@
+[
+    {
+        "id": "38c4a5c6d9caf636",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "Error Handling (at /foreseen-error and /unforeseen-error)",
+        "info": "",
+        "x": 890,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "753fcfbc2be035dc",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "foreseen-error",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 770,
+        "y": 400,
+        "wires": [
+            [
+                "dcd8727e7c8b3abf"
+            ]
+        ]
+    },
+    {
+        "id": "a7c0f3928f01a639",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "unforeseen-error",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 780,
+        "y": 540,
+        "wires": [
+            [
+                "5ecbb1f15a401d7a"
+            ]
+        ]
+    },
+    {
+        "id": "5ecbb1f15a401d7a",
+        "type": "function",
+        "z": "4730a3973976294e",
+        "name": "throw exception",
+        "func": "throw 'unforeseen error'",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "467391b272bd32ca",
+        "type": "catch",
+        "z": "4730a3973976294e",
+        "name": "",
+        "scope": [
+            "5ecbb1f15a401d7a"
+        ],
+        "uncaught": false,
+        "x": 770,
+        "y": 580,
+        "wires": [
+            [
+                "b48773a032616240"
+            ]
+        ]
+    },
+    {
+        "id": "e67c327dce742cc2",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "send Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 1160,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "dcd8727e7c8b3abf",
+        "type": "function",
+        "z": "4730a3973976294e",
+        "name": "validate Request",
+        "func": "let RequestIsBad = true\n\n// add your request validation here\n\nif (RequestIsBad) {\n  msg.payload    = 'Bad Request'\n  msg.statusCode = 400\n  return [msg,null]\n} else {\n  return [null,msg]\n}\n",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 400,
+        "wires": [
+            [
+                "e67c327dce742cc2"
+            ],
+            [
+                "448c92f7eb4171ae"
+            ]
+        ]
+    },
+    {
+        "id": "448c92f7eb4171ae",
+        "type": "function",
+        "z": "4730a3973976294e",
+        "name": "additional Processing",
+        "func": "msg.payload    = 'Success'\nmsg.statusCode = 200\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 460,
+        "wires": [
+            [
+                "e67c327dce742cc2"
+            ]
+        ]
+    },
+    {
+        "id": "b48773a032616240",
+        "type": "change",
+        "z": "4730a3973976294e",
+        "name": "internal Error",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Internal Server Error",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "500",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 580,
+        "wires": [
+            [
+                "0596dc711f94dd27"
+            ]
+        ]
+    },
+    {
+        "id": "0596dc711f94dd27",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "send Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 1160,
+        "y": 580,
+        "wires": []
+    }
+]
