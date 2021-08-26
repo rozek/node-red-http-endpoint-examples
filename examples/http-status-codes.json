@@ -1,0 +1,95 @@
+[
+    {
+        "id": "faa3e0fcbda2698a",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "set HTTP Status Code (at /status-code)",
+        "info": "",
+        "x": 830,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "cfe9b57f4d2873d3",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "status-code/:code",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 790,
+        "y": 160,
+        "wires": [
+            [
+                "dd7a4bdc1d7b1608"
+            ]
+        ]
+    },
+    {
+        "id": "4cb13d15753ac34d",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "send Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 1160,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "dd7a4bdc1d7b1608",
+        "type": "function",
+        "z": "4730a3973976294e",
+        "name": "process Request",
+        "func": "let StatusCode = parseInt(msg.req.params.code,10)\nif (isNaN(StatusCode)) { StatusCode = 'NaN'}\n\nlet StatusText = ''\n  switch (StatusCode) {\n    case 'NaN': StatusText = 'invalid status code given'; StatusCode = 400; break\n\n    case 100: StatusText = 'Continue'; break\n    case 101: StatusText = 'Switching Protocols'; break\n    case 102: StatusText = 'Processing'; break\n    case 103: StatusText = 'Early Hints'; break\n    case 110: StatusText = 'Response is Stale'; break\n    case 111: StatusText = 'Revalidation Failed'; break\n    case 112: StatusText = 'Disconnected Operation'; break\n    case 113: StatusText = 'Heuristic Expiration'; break\n    \n    case 200: StatusText = 'OK'; break\n    case 201: StatusText = 'Created'; break\n    case 202: StatusText = 'Accepted'; break\n    case 203: StatusText = 'Non-Authoritative Information'; break\n    case 204: StatusText = 'No Content'; break\n    case 205: StatusText = 'Reset Content'; break\n    case 206: StatusText = 'Partial Content'; break\n    case 207: StatusText = 'Multi-Status'; break\n    case 208: StatusText = 'Already Reported'; break\n    case 214: StatusText = 'Transformation Applied'; break\n    case 226: StatusText = 'IM Used'; break\n    case 299: StatusText = 'Miscellaneous Persistent Warning'; break\n    \n    case 300: StatusText = 'Multiple Choices'; break\n    case 301: StatusText = 'Moved Permanently'; break\n    case 302: StatusText = 'Found'; break\n    case 303: StatusText = 'See Other'; break\n    case 304: StatusText = 'Not Modified'; break\n    case 305: StatusText = 'Use Proxy'; break\n    case 306: StatusText = 'Switch Proxy'; break\n    case 307: StatusText = 'Temporary Redirect'; break\n    case 308: StatusText = 'Permanent Redirect'; break\n    \n    case 400: StatusText = 'Bad Request'; break\n    case 401: StatusText = 'Unauthorized'; break\n    case 402: StatusText = 'Payment Required'; break\n    case 403: StatusText = 'Forbidden'; break\n    case 404: StatusText = 'Not Found'; break\n    case 405: StatusText = 'Method Not Allowed'; break\n    case 406: StatusText = 'Not Acceptable'; break\n    case 407: StatusText = 'Proxy Authentication Required'; break\n    case 408: StatusText = 'Request Timeout'; break\n    case 409: StatusText = 'Conflict'; break\n    case 410: StatusText = 'Gone'; break\n    case 411: StatusText = 'Length Required'; break\n    case 412: StatusText = 'Precondition Failed'; break\n    case 413: StatusText = 'Payload Too Large'; break\n    case 414: StatusText = 'URI Too Long'; break\n    case 415: StatusText = 'Unsupported Media Type'; break\n    case 416: StatusText = 'Range Not Satisfiable'; break\n    case 417: StatusText = 'Expectation Failed'; break\n    case 418: StatusText = 'I\\'m a teapot'; break\n    case 421: StatusText = 'Misdirected Request'; break\n    case 422: StatusText = 'Unprocessable Entity'; break\n    case 423: StatusText = 'Locked'; break\n    case 424: StatusText = 'Failed Dependency'; break\n    case 425: StatusText = 'Too Early'; break\n    case 426: StatusText = 'Upgrade Required'; break\n    case 428: StatusText = 'Precondition Required'; break\n    case 429: StatusText = 'Too Many Requests'; break\n    case 431: StatusText = 'Request Header Fields Too Large'; break\n    case 451: StatusText = 'Unavailable For Legal Reasons'; break\n    \n    case 500: StatusText = 'Internal Server Error'; break\n    case 501: StatusText = 'Not Implemented'; break\n    case 502: StatusText = 'Bad Gateway'; break\n    case 503: StatusText = 'Service Unavailable'; break\n    case 504: StatusText = 'Gateway Timeout'; break\n    case 505: StatusText = 'HTTP Version Not Supported'; break\n    case 506: StatusText = 'Variant Also Negotiates'; break\n    case 507: StatusText = 'Insufficient Storage'; break\n    case 508: StatusText = 'Loop Detected'; break\n    case 510: StatusText = 'Not Extended'; break\n    case 511: StatusText = 'Network Authentication Required'; break\n  }\nif (StatusText === '') {\n  msg.payload    = 'unknown HTTP status code \"' + StatusCode + '\"'\n  msg.statusCode = StatusCode\n} else {\n  msg.payload    = StatusText\n  msg.statusCode = StatusCode\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1030,
+        "y": 160,
+        "wires": [
+            [
+                "4cb13d15753ac34d",
+                "0401e5a9c2df2cde"
+            ]
+        ]
+    },
+    {
+        "id": "fbc7dbd160c441e3",
+        "type": "debug",
+        "z": "4730a3973976294e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "0401e5a9c2df2cde",
+        "type": "template",
+        "z": "4730a3973976294e",
+        "name": "combine StatusCode and StatusText",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{statusCode}} {{{payload}}}",
+        "output": "str",
+        "x": 890,
+        "y": 260,
+        "wires": [
+            [
+                "fbc7dbd160c441e3"
+            ]
+        ]
+    }
+]
