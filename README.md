@@ -116,7 +116,13 @@ Import the [data type example](examples/different-data-types.json), "deploy" and
 
 ### Multiple Endpoints matching the same URL ###
 
+So far, we have seen several examples - all of them playing well together because of different HTTP endpoints. The question arises what happens if there are more than a single endpoint triggered by a given URL (which may easily happen if endpoints with placeholders are used)
+
 ![](examples/multiple-endpoints.png)
+
+Our [final example](examples/multiple-endpoints.json) addresses this problem: two different endpoints may handle the same URL. When tested (e.g., with the included Postman collection), only one of both endpoints will be triggered. Which one, depends on the order their creation - in practice, it is therefore a good idea to assume "unpredictable behaviour".
+
+The important lesson to learn: Node-RED does not produce an error, not even a warning - it will be up to you to keep track of your endpoints and the range of URLs they cover.
 
 ## License ##
 
