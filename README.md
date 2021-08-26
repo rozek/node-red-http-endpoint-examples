@@ -12,7 +12,13 @@ Independent of a specific Node-RED use case, the following extensions might be u
 
 ## Examples ##
 
-As usual, the examples in this repository start small and simple, but become increasingly complex up to complete small applications. Their specification is stored in JSON format and may easily be imported into a Node-RED workspace. Preferrably, you should open a separate tab and insert the examples there.
+As usual, the examples in this repository start small and simple, but become increasingly complex up to complete small applications.
+
+Their specification is stored in JSON format and may easily be imported into a Node-RED workspace. Preferrably, you should open a separate tab and insert the examples there.
+
+To test the examples a [Postman](https://www.postman.com/) Collection is included, which may easily imported into a running Postman instance. After the import, you should open the collection#s "Variables" section and set the `BaseURL` to the base URL of your NodeRED instance (by default, it is set to `127.0.0.1:1880`, which should work out-of-the-box for most Node-RED installations). If your Node-RED instance has been configured to required basic authentication, you should also set the variables `Username` and `Password`)
+
+Alternatively, other tools like [cURL](https://curl.se/) may be used as well.
 
 ### trivial HTTP(S) Server ###
 
