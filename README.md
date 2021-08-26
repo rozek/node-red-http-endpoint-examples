@@ -25,3 +25,11 @@ The [first example](examples/trivial-http-server.json) is just to illustrate how
 ![](examples/trivial-http-server.png)
 
 Import the source, "deploy" and send a `GET` request to `{{BaseURL}}/trivial-http-server` (where you replace {{BaseURL}} by the base URL of your Node-RED instance) - the enclosed Postman collection already includes such a request. The response includes a complete (albeit simple) HTML page - but any other result could be sent as well.
+
+### Show Request on Debug Console ###
+
+For own developments, it is often useful to display the complete `msg` of an incoming HTTP request on the debug console.
+
+![](examples/show-request.png)
+
+Import the [example](examples/show-request.json), "deploy", use Postman to send requests with all HTTP methods Node-RED supports and inspect their output.
