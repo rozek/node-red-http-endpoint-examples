@@ -116,7 +116,7 @@ Import the [data type example](examples/different-data-types.json), "deploy" and
 
 ### Multiple Endpoints matching the same URL ###
 
-So far, we have seen several examples - all of them playing well together because of different HTTP endpoints. The question arises what happens if there are more than a single endpoint triggered by a given URL (which may easily happen if endpoints with placeholders are used)
+So far, we have seen several examples - all of them playing well together because of different HTTP endpoints. The question arises what happens if there is more than a single endpoint for the same URL (a situation which may easily occur if endpoints with placeholders are used)
 
 ![](examples/multiple-endpoints.png)
 
