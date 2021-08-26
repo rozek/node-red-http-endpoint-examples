@@ -1,0 +1,59 @@
+[
+    {
+        "id": "457a1ee62bf5aa27",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "Hello, World!",
+        "url": "trivial-http-server",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 160,
+        "wires": [
+            [
+                "bed67d33379eef9a"
+            ]
+        ]
+    },
+    {
+        "id": "bed67d33379eef9a",
+        "type": "template",
+        "z": "4730a3973976294e",
+        "name": "create Response",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"en\" style=\"width:100%; height:100%\">\n <head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n </head>\n <body>\n  <h1>Hello, World!</h1>\n </body>\n</html>",
+        "output": "str",
+        "x": 290,
+        "y": 160,
+        "wires": [
+            [
+                "ec2fd6df0b4618ba"
+            ]
+        ]
+    },
+    {
+        "id": "ec2fd6df0b4618ba",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "send Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 500,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "e5b4fa2e7622d8fa",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "trivial HTTP(S) Server (at /trivial-http-server)",
+        "info": "depends on Node-RED's current settings.js",
+        "x": 190,
+        "y": 100,
+        "wires": []
+    }
+]
