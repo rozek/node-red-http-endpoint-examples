@@ -60,15 +60,23 @@ Import the [query handling example](examples/query-handling.json), "deploy" and 
 
 An important part of an HTTP response is its [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) which informs the client about success or failure and - if the request failed - the reason for failure.
 
-Node-RED allows the status code of a response to be explicitly set. This example combines this feature with URL placeholders and responds an incoming request with the status code it contains.
+Node-RED allows the status code of a response to be explicitly set. This example combines this feature with URL placeholders and answers an incoming request with the status code it contains.
 
 ![](examples/http-status-codes.png)
 
-Import the [status code example](examples/http-status-codes.json), "deploy" and use the included Postman collection to send requests for different status codes to `{{BaseURL}}/status-code`
+Import the [status code example](examples/http-status-codes.json), "deploy" and use the included Postman collection to send requests for different status codes to `{{BaseURL}}/status-code`. Responses should contain the requested status code (if known) and a short explanation of their meaning
 
 ### Error Handling ###
 
+An important aspect of request processing is the handling of errors - both "foreseen" and "unforeseen" ones.
+
+"Foreseen" errors are simple: just check incoming requests and their contents for mistakes and react by responding with an appropriate HTTP status code. Common I/O and processing errors may be handled similarly using specific "catch" nodes.
+
+Risky are all those errors the programmer does not think of - for those, a generic "catch" node dealing with all exceptions not otherwise caught should be included and send an "Internal Server Error" (HTTP status code 500) back. 
+
 ![](examples/error-handling.png)
+
+Import the [error handling example](examples/error-handling.json), "deploy" and use the included Postman collection to send two requests: one to `{{BaseURL}}/foreseen-error` (which responds with 400 "Bad Request") and one to `{{BaseURL}}/unforeseen-error` (which responds with 500 "Internal Server Error")
 
 ### Request and Response Header Handling ###
 
