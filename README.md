@@ -16,14 +16,14 @@ As usual, the examples in this repository start small and simple, but become inc
 
 Their specification is stored in JSON format and may easily be imported into a Node-RED workspace. Preferrably, you should open a separate tab and insert the examples there.
 
-To test the examples a [Postman](https://www.postman.com/) Collection is included, which may easily imported into a running Postman instance. After the import, you should open the collection#s "Variables" section and set the `BaseURL` to the base URL of your NodeRED instance (by default, it is set to `127.0.0.1:1880`, which should work out-of-the-box for most Node-RED installations). If your Node-RED instance has been configured to required basic authentication, you should also set the variables `Username` and `Password`)
+To test the examples, a [Postman collection](examples/PostmanCollection.json) is included, which may easily be imported into a running [Postman](https://www.postman.com/) instance. After the import, you should open the collection's "Variables" section and set the `BaseURL` to the base URL of your NodeRED instance (by default, it is set to `127.0.0.1:1880`, which should work out-of-the-box for most Node-RED installations). If your Node-RED instance has been configured to require basic authentication, you should also set the variables `Username` and `Password`)
 
 Alternatively, other tools like [cURL](https://curl.se/) may be used as well.
 
-### trivial HTTP(S) Server ###
+### Trivial HTTP(S) Server ###
 
 The [first example](examples/trivial-http-server.json) is just to illustrate how easy it can be to implement a web service with Node-RED.
 
 ![](examples/trivial-http-server.png)
 
-Import the source, "deploy" and ...
+Import the source, "deploy" and send a `GET` request to `{{BaseURL}}/trivial-http-server` (where you replace {{BaseURL}} by the base URL of your Node-RED instance) - the enclosed Postman collection already includes such a request. The response includes a complete (albeit simple) HTML page - but any other result could be sent as well.
