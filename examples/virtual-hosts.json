@@ -1,0 +1,59 @@
+[
+    {
+        "id": "e6ecaeaf7330ec25",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "virtual Hosts (at /virtual-host)",
+        "info": "",
+        "x": 1460,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "73ade7c0b5fc7f80",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "virtual-host",
+        "method": "get",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 1420,
+        "y": 160,
+        "wires": [
+            [
+                "d979be08dbbaefc9"
+            ]
+        ]
+    },
+    {
+        "id": "d979be08dbbaefc9",
+        "type": "function",
+        "z": "4730a3973976294e",
+        "name": "process Request",
+        "func": "let HostHeader = msg.req.headers['host']\nmsg.payload = HostHeader\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1630,
+        "y": 160,
+        "wires": [
+            [
+                "701b0378d7fa6771"
+            ]
+        ]
+    },
+    {
+        "id": "701b0378d7fa6771",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1820,
+        "y": 160,
+        "wires": []
+    }
+]
