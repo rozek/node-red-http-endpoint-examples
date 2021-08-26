@@ -1,0 +1,78 @@
+[
+    {
+        "id": "35d1dbcf6632dc2b",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "Request and Response Header Handling (at /header-handling)",
+        "info": "",
+        "x": 900,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "b891dfa7b32037b1",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "header-handling",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 780,
+        "y": 720,
+        "wires": [
+            [
+                "9bb6a4570c21e22f"
+            ]
+        ]
+    },
+    {
+        "id": "6fa55f30a47f3254",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "send Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 1160,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "9bb6a4570c21e22f",
+        "type": "function",
+        "z": "4730a3973976294e",
+        "name": "process Request",
+        "func": "let customRequestHeader = msg.req.headers['custom-header']\n\nlet Output = (\n  customRequestHeader == null\n  ? 'custom header is missing'\n  : 'custom header found: \"' + customRequestHeader + '\"'\n)\n\nmsg.headers = msg.headers || {}\nmsg.headers['custom-header'] = 'custom response header value'\nmsg.payload = 'inspect headers, there should be a \"custom-header\"'\n\nreturn [{ payload:Output }, msg ]",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1010,
+        "y": 720,
+        "wires": [
+            [
+                "10cd0135c91dbc8a"
+            ],
+            [
+                "6fa55f30a47f3254"
+            ]
+        ]
+    },
+    {
+        "id": "10cd0135c91dbc8a",
+        "type": "debug",
+        "z": "4730a3973976294e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 820,
+        "wires": []
+    }
+]
