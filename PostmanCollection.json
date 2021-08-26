@@ -172,6 +172,25 @@
 					"response": []
 				},
 				{
+					"name": "\"any\" with a simple value",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/routing/any/simple-value",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"routing",
+								"any",
+								"simple-value"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "a path for \"any\"",
 					"request": {
 						"method": "GET",
@@ -186,23 +205,6 @@
 								"a",
 								"complete",
 								"path"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "no \"any\"",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{BaseURL}}/routing",
-							"host": [
-								"{{BaseURL}}"
-							],
-							"path": [
-								"routing"
 							]
 						}
 					},
@@ -300,7 +302,7 @@
 			"name": "HTTP Status Codes",
 			"item": [
 				{
-					"name": "I'm a teapot Copy",
+					"name": "I'm a teapot",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -419,7 +421,7 @@
 									"key": "file",
 									"contentType": "text/plain",
 									"type": "file",
-									"src": "./dummy-for-file-upload.txt"
+									"src": "./examples/file-upload.txt"
 								}
 							]
 						},
