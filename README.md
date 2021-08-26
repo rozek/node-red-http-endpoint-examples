@@ -38,7 +38,7 @@ Import the [example](examples/show-request.json), "deploy", send requests to `{{
 
 ### Routing (with Placeholders) ###
 
-HTTP servers usually offer more than just a single endpoint - and often, parts of the requested URL control how the response will look like (in the simplest case, the URL contains the path of the file to be sent back).
+HTTP servers usually offer more than just a single endpoint - and often, parts of the requested URL control how the response will look like (in the simplest case, the URL contains the path of a file to be sent back).
 
 ![](examples/routing-with-placeholders.png)
 
@@ -50,7 +50,11 @@ Import the [routing example](examples/routing.json), "deploy" and use the includ
 
 ### Query Handling ###
 
+URLs may contain a "query" with "parameters" and "values". Node-RED automatically parses incoming queries and makes their contents available under `msg.req.query`. Usually, the values found their are strings, but if the same parameter appears multiple times, its values are stored in an array
+
 ![](examples/query-handling.png)
+
+Import the [query handling example](examples/query-handling.json), "deploy" and use the included Postman collection to send a request with an empty, a single and a multiple query parameter to `{{BaseURL}}/query`. The response will contain the actual contents of `msg.req.query` 
 
 ### Setting HTTP Status Codes ###
 
