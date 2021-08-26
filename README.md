@@ -88,7 +88,12 @@ Import the [header handling example](examples/header-handling.json), "deploy" an
 
 ### File Uploads ###
 
+A common operation many server provide is the upload of files. Node-RED supports file uploads out-of-the-box as part of their handling of POST requests.
+
 ![](examples/file-upload.png)
+
+Import the [file upload example](examples/header-handling.json), "deploy" and use the included Postman collection to send a request to `{{BaseURL}}/file-upload`. As a "proof" of a successful file upload
+
 
 ### Virtual Hosts ###
 
