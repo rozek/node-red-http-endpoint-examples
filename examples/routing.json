@@ -1,0 +1,150 @@
+[
+    {
+        "id": "444e78ca04b111e4",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "Routing with Placeholders (at /routing)",
+        "info": "",
+        "x": 170,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "fec2c089002c78e6",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "routing/any/:subpath(*)",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 640,
+        "wires": [
+            [
+                "ba1bada606a7dc3a"
+            ]
+        ]
+    },
+    {
+        "id": "c049a672b28c23fc",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "routing/:inner/suffix",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 680,
+        "wires": [
+            [
+                "e465a6328cf6a2ce"
+            ]
+        ]
+    },
+    {
+        "id": "e24c27d91e5dcb83",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "routing/:first/and/:second",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 720,
+        "wires": [
+            [
+                "6a0c543d2ab4a9f3"
+            ]
+        ]
+    },
+    {
+        "id": "ba1bada606a7dc3a",
+        "type": "template",
+        "z": "4730a3973976294e",
+        "name": "process Request",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\"subpath\":\"{{{req.params.subpath}}}\"",
+        "output": "str",
+        "x": 410,
+        "y": 640,
+        "wires": [
+            [
+                "dcd1df35a0db50ae",
+                "9967bb236a053ce9"
+            ]
+        ]
+    },
+    {
+        "id": "9967bb236a053ce9",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "send Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 500,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "dcd1df35a0db50ae",
+        "type": "debug",
+        "z": "4730a3973976294e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "e465a6328cf6a2ce",
+        "type": "template",
+        "z": "4730a3973976294e",
+        "name": "process Request",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\"inner\":\"{{{req.params.inner}}}\"",
+        "output": "str",
+        "x": 410,
+        "y": 680,
+        "wires": [
+            [
+                "9967bb236a053ce9",
+                "dcd1df35a0db50ae"
+            ]
+        ]
+    },
+    {
+        "id": "6a0c543d2ab4a9f3",
+        "type": "template",
+        "z": "4730a3973976294e",
+        "name": "process Request",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\"first\":\"{{{req.params.first}}}\",\n\"second\":\"{{{req.params.second}}}\"",
+        "output": "str",
+        "x": 410,
+        "y": 720,
+        "wires": [
+            [
+                "9967bb236a053ce9",
+                "dcd1df35a0db50ae"
+            ]
+        ]
+    }
+]
