@@ -88,16 +88,21 @@ Import the [header handling example](examples/header-handling.json), "deploy" an
 
 ### File Uploads ###
 
-A common operation many server provide is the upload of files. Node-RED supports file uploads out-of-the-box as part of their handling of POST requests.
+A common operation many servers provide is the upload of files. Node-RED supports file uploads out-of-the-box as part of their handling of POST requests.
 
 ![](examples/file-upload.png)
 
-Import the [file upload example](examples/header-handling.json), "deploy" and use the included Postman collection to send a request to `{{BaseURL}}/file-upload`. As a "proof" of a successful file upload
-
+Import the [file upload example](examples/header-handling.json), "deploy" and use the included Postman collection to send a request to `{{BaseURL}}/file-upload`. As a "proof" of a successful file upload the response will contain the uploaded file's name and its MIME type.
 
 ### Virtual Hosts ###
 
+For web site hosters, it is quite common to handle multiple domains within the same server - a feature called "virtual hosts". Technically, these hosts are only distinguished by a special HTTP header (and with a lot of help from the requesting client).
+
+And - since Node-RED supports headers, it also supports the handling of "virtual hosts".
+
 ![](examples/virtual-hosts.png)
+
+Import the [virtual host example](examples/virtual-hosts.json), "deploy" and use the included Postman collection to send a request to `{{BaseURL}}/virtual-hosts`. The example will respond with the contents of the HTTP "Host" header - which is quite boring when used locally, but may principally be used to serve different domains from a single Node-RED instance
 
 ### Delivering different Types of Data ###
 
