@@ -35,3 +35,39 @@ For own developments, it is often useful to display the complete `msg` of an inc
 ![](examples/show-request.png)
 
 Import the [example](examples/show-request.json), "deploy", send requests to `{{BaseURL}}/show-request` trying all HTTP methods Node-RED supports and inspect their output.
+
+### Routing (with Placeholders) ###
+
+![](examples/routing-with-placeholders.png)
+
+### Query Handling ###
+
+![](examples/query-handling.png)
+
+### Setting HTTP Status Codes ###
+
+![](examples/http-status-codes.png)
+
+### Error Handling ###
+
+![](examples/error-handling.png)
+
+### Request and Response Header Handling ###
+
+![](examples/header-handling.png)
+
+### File Uploads ###
+
+![](examples/file-upload.png)
+
+### Virtual Hosts ###
+
+![](examples/virtual-hosts.png)
+
+### Delivering different Types of Data ###
+
+![](examples/different-data-types.png)
+
+### Multiple Endpoints matching the same URL ###
+
+![](examples/multiple-endpoints.png)
