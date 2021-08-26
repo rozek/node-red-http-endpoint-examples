@@ -42,7 +42,7 @@
         "type": "function",
         "z": "4730a3973976294e",
         "name": "create Response",
-        "func": "msg.payload = (\n  'File:      \"' + msg.req.files[0].originalname + '\"\\n' +\n  'MIME-Type: \"' + msg.req.files[0].mimetype + '\"'\n)\nreturn msg;",
+        "func": "if (msg.req.files == null) { // no files uploaded\n  msg.payload    = \"Bad Request (missing upload file)\"\n  msg.statusCode = 400\n} else {\n  msg.payload = (\n    'File:      \"' + msg.req.files[0].originalname + '\"\\n' +\n    'MIME-Type: \"' + msg.req.files[0].mimetype + '\"'\n  )\n  msg.statusCode = 200\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
