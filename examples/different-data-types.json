@@ -1,0 +1,210 @@
+[
+    {
+        "id": "2f32071ef7bb110d",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "delivering different Types of Data (at /data-of-type-XXX)",
+        "info": "",
+        "x": 1540,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "238793311dabfdd6",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "data-of-type-text-plain",
+        "method": "get",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 1460,
+        "y": 380,
+        "wires": [
+            [
+                "cffded47ea1c03d0"
+            ]
+        ]
+    },
+    {
+        "id": "b51281afcd501289",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "data-of-type-application-json",
+        "method": "get",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 1480,
+        "y": 500,
+        "wires": [
+            [
+                "68a3c31298d82cc0"
+            ]
+        ]
+    },
+    {
+        "id": "3e924f0ff93cd624",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "data-of-type-image-png",
+        "method": "get",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 1460,
+        "y": 620,
+        "wires": [
+            [
+                "8fa440683ca55861"
+            ]
+        ]
+    },
+    {
+        "id": "cffded47ea1c03d0",
+        "type": "change",
+        "z": "4730a3973976294e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "this is some plain text",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"text/plain\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1640,
+        "y": 440,
+        "wires": [
+            [
+                "c0f311bbfc8d346a"
+            ]
+        ]
+    },
+    {
+        "id": "c0f311bbfc8d346a",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1820,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "68a3c31298d82cc0",
+        "type": "change",
+        "z": "4730a3973976294e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{ \"type\":\"json\" }",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1640,
+        "y": 560,
+        "wires": [
+            [
+                "19311e74fb2a3167"
+            ]
+        ]
+    },
+    {
+        "id": "19311e74fb2a3167",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1820,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "8fa440683ca55861",
+        "type": "file in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "filename": "Mandelbrot_240x240.png",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 1730,
+        "y": 620,
+        "wires": [
+            [
+                "7fb230d107b1b06f"
+            ]
+        ]
+    },
+    {
+        "id": "7fb230d107b1b06f",
+        "type": "change",
+        "z": "4730a3973976294e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"image/png\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1630,
+        "y": 680,
+        "wires": [
+            [
+                "39689ce2448f0aba"
+            ]
+        ]
+    },
+    {
+        "id": "39689ce2448f0aba",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1820,
+        "y": 680,
+        "wires": []
+    }
+]
