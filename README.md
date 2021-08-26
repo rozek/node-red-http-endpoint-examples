@@ -72,7 +72,7 @@ An important aspect of request processing is the handling of errors - both "fore
 
 "Foreseen" errors are simple: just check incoming requests and their contents for mistakes and react by responding with an appropriate HTTP status code. Common I/O and processing errors may be handled similarly using specific "catch" nodes.
 
-Risky are all those errors the programmer does not think of - for those, a generic "catch" node dealing with all exceptions not otherwise caught should be included and send an "Internal Server Error" (HTTP status code 500) back. 
+Risky are all those errors the programmer does not think of - for those, a generic "catch" node dealing with all exceptions not otherwise caught should always be included and send an "Internal Server Error" (HTTP status code 500) back. 
 
 ![](examples/error-handling.png)
 
@@ -80,7 +80,11 @@ Import the [error handling example](examples/error-handling.json), "deploy" and 
 
 ### Request and Response Header Handling ###
 
+Besides the actual content (the "body") HTTP requests and responses contain several "headers" with additional information about the request (or response). Node-RED allows incoming headers to be inspected and outgoing headers to be defined - both standard as well as non-standard headers are supported.
+
 ![](examples/header-handling.png)
+
+Import the [header handling example](examples/header-handling.json), "deploy" and use the included Postman collection to test: it contains a request with a "custom-header" whose value will be returned when sent to `{{BaseURL}}/header-handling`. Don't forget to inspect the respopnse headers for the custom one.
 
 ### File Uploads ###
 
