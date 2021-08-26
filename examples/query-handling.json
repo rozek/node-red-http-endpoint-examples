@@ -1,0 +1,76 @@
+[
+    {
+        "id": "75a15f0a5b21b676",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "Query Handling (at /query)",
+        "info": "",
+        "x": 130,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "4fd79775fd3ae9a9",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "query",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 940,
+        "wires": [
+            [
+                "caccc7229a5c7b7d"
+            ]
+        ]
+    },
+    {
+        "id": "caccc7229a5c7b7d",
+        "type": "template",
+        "z": "4730a3973976294e",
+        "name": "process Request",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\"single\":\"{{{req.query.single}}}\",\n\"multiple\":\"{{{req.query.multiple}}}\",\n\"empty\":\"{{{req.query.empty}}}\"",
+        "output": "str",
+        "x": 290,
+        "y": 940,
+        "wires": [
+            [
+                "487be741aedff65c",
+                "be5a056012092bdb"
+            ]
+        ]
+    },
+    {
+        "id": "487be741aedff65c",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "send Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 500,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "be5a056012092bdb",
+        "type": "debug",
+        "z": "4730a3973976294e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 980,
+        "wires": []
+    }
+]
