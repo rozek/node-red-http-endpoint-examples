@@ -32,4 +32,4 @@ For own developments, it is often useful to display the complete `msg` of an inc
 
 ![](examples/show-request.png)
 
-Import the [example](examples/show-request.json), "deploy", use Postman to send requests with all HTTP methods Node-RED supports and inspect their output.
+Import the [example](examples/show-request.json), "deploy", send requests to `{{BaseURL}}/show-request` trying all HTTP methods Node-RED supports and inspect their output.
