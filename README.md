@@ -106,7 +106,13 @@ Import the [virtual host example](examples/virtual-hosts.json), "deploy" and use
 
 ### Delivering different Types of Data ###
 
+HTTP servers may deliver content of different types (as text or in binary form) and with different encodings. HTTP clients (such as browsers) determine the actual type of a response body with the aid of a header called "Content-Type".
+
+Node-RED can send data in both text and binary form. While it may be able to "guess" the data type in some common situations, it is usually a good idea to set this header explicitly.
+
 ![](examples/different-data-types.png)
+
+Import the [data type example](examples/different-data-types.json), "deploy" and use the included Postman collection to send requests to `{{BaseURL}}/data-of-type-text-plain`, `{{BaseURL}}/data-of-type-application-json` and `{{BaseURL}}/data-of-type-image-png`. Because of the "Content-Type" header, Postman will be able to interpret the returned data properly and, e.g., present a returned image by displaying it.
 
 ### Multiple Endpoints matching the same URL ###
 
