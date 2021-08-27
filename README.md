@@ -1,4 +1,4 @@
-# node-red-http-examples #
+# node-red-http-server-examples #
 
 This collection of HTTP(S)-related [Node-RED](https://nodered.org/) examples (with a matching [Postman](https://www.postman.com/) collection for testing) is mainly intended for my students, but parts of it may also be of more general interest.
 
