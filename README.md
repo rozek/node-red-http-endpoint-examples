@@ -56,36 +56,6 @@ URLs may contain a "query" with "parameters" and "values". Node-RED automaticall
 
 Import the [query handling example](examples/query-handling.json), "deploy" and use the included Postman collection to send a request with an empty, a single and a multiple query parameter to `{{BaseURL}}/query`. The response will contain the actual contents of `msg.req.query` 
 
-### Setting HTTP Status Codes ###
-
-An important part of an HTTP response is its [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) which informs the client about success or failure and - if the request failed - the reason for failure.
-
-Node-RED allows the status code of a response to be explicitly set. This example combines this feature with URL placeholders and answers an incoming request with the status code it contains.
-
-![](examples/http-status-codes.png)
-
-Import the [status code example](examples/http-status-codes.json), "deploy" and use the included Postman collection to send requests for different status codes to `{{BaseURL}}/status-code`. Responses should contain the requested status code (if known) and a short explanation of their meaning
-
-### Error Handling ###
-
-An important aspect of request processing is the handling of errors - both "foreseen" and "unforeseen" ones.
-
-"Foreseen" errors are simple: just check incoming requests and their contents for mistakes and react by responding with an appropriate HTTP status code. Common I/O and processing errors may be handled similarly using specific "catch" nodes.
-
-Risky are all those errors the programmer does not think of - for those, a generic "catch" node dealing with all exceptions not otherwise caught should always be included and send an "Internal Server Error" (HTTP status code 500) back. 
-
-![](examples/error-handling.png)
-
-Import the [error handling example](examples/error-handling.json), "deploy" and use the included Postman collection to send two requests: one to `{{BaseURL}}/foreseen-error` (which responds with 400 "Bad Request") and one to `{{BaseURL}}/unforeseen-error` (which responds with 500 "Internal Server Error")
-
-### Request and Response Header Handling ###
-
-Besides the actual content (the "body") HTTP requests and responses contain several "headers" with additional information about the request (or response). Node-RED allows incoming headers to be inspected and outgoing headers to be defined - both standard as well as non-standard headers are supported.
-
-![](examples/header-handling.png)
-
-Import the [header handling example](examples/header-handling.json), "deploy" and use the included Postman collection to test: it contains a request with a "custom-header" whose value will be returned when sent to `{{BaseURL}}/header-handling`. Don't forget to inspect the respopnse headers for the custom one.
-
 ### Form Processing ###
 
 An often needed feature of web applications (especially of application "frontends") is the submission of "forms". Node-RED is prepared to receive form contents and automatically parses them in order to simplify form processing.
@@ -102,15 +72,23 @@ A common operation many servers provide is the upload of files. Node-RED support
 
 Import the [file upload example](examples/header-handling.json), "deploy" and use the included Postman collection to send a request to `{{BaseURL}}/file-upload`. As a "proof" of a successful file upload the response will contain the uploaded file's name and its MIME type.
 
-### Virtual Hosts ###
+### Setting HTTP Status Codes ###
 
-For web site hosters, it is quite common to handle multiple domains within the same server - a feature called "virtual hosts". Technically, these hosts are only distinguished by a special HTTP header (and with a lot of help from the requesting client).
+An important part of an HTTP response is its [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) which informs the client about success or failure and - if the request failed - the reason for failure.
 
-And - since Node-RED supports headers, it also supports the handling of "virtual hosts".
+Node-RED allows the status code of a response to be explicitly set. This example combines this feature with URL placeholders and answers an incoming request with the status code it contains.
 
-![](examples/virtual-hosts.png)
+![](examples/http-status-codes.png)
 
-Import the [virtual host example](examples/virtual-hosts.json), "deploy" and use the included Postman collection to send a request to `{{BaseURL}}/virtual-hosts`. The example will respond with the contents of the HTTP "Host" header - which is quite boring when used locally, but may principally be used to serve different domains from a single Node-RED instance
+Import the [status code example](examples/http-status-codes.json), "deploy" and use the included Postman collection to send requests for different status codes to `{{BaseURL}}/status-code`. Responses should contain the requested status code (if known) and a short explanation of their meaning
+
+### Request and Response Header Handling ###
+
+Besides the actual content (the "body") HTTP requests and responses contain several "headers" with additional information about the request (or response). Node-RED allows incoming headers to be inspected and outgoing headers to be defined - both standard as well as non-standard headers are supported.
+
+![](examples/header-handling.png)
+
+Import the [header handling example](examples/header-handling.json), "deploy" and use the included Postman collection to test: it contains a request with a "custom-header" whose value will be returned when sent to `{{BaseURL}}/header-handling`. Don't forget to inspect the respopnse headers for the custom one.
 
 ### Delivering different Types of Data ###
 
@@ -123,6 +101,28 @@ Node-RED can send data in both text and binary form. While it may be able to "gu
 > for this example to work, please copy file `Mandelbrot_240x240.png` into the working directory of your Node-RED instance
 
 Import the [data type example](examples/different-data-types.json), "deploy" and use the included Postman collection to send requests to `{{BaseURL}}/data-of-type-text-plain`, `{{BaseURL}}/data-of-type-application-json` and `{{BaseURL}}/data-of-type-image-png`. Because of the "Content-Type" header, Postman will be able to interpret the returned data properly and, e.g., present a returned image by displaying it.
+
+### Error Handling ###
+
+An important aspect of request processing is the handling of errors - both "foreseen" and "unforeseen" ones.
+
+"Foreseen" errors are simple: just check incoming requests and their contents for mistakes and react by responding with an appropriate HTTP status code. Common I/O and processing errors may be handled similarly using specific "catch" nodes.
+
+Risky are all those errors the programmer does not think of - for those, a generic "catch" node dealing with all exceptions not otherwise caught should always be included and send an "Internal Server Error" (HTTP status code 500) back. 
+
+![](examples/error-handling.png)
+
+Import the [error handling example](examples/error-handling.json), "deploy" and use the included Postman collection to send two requests: one to `{{BaseURL}}/foreseen-error` (which responds with 400 "Bad Request") and one to `{{BaseURL}}/unforeseen-error` (which responds with 500 "Internal Server Error")
+
+### Virtual Hosts ###
+
+For web site hosters, it is quite common to handle multiple domains within the same server - a feature called "virtual hosts". Technically, these hosts are only distinguished by a special HTTP header (and with a lot of help from the requesting client).
+
+And - since Node-RED supports headers, it also supports the handling of "virtual hosts".
+
+![](examples/virtual-hosts.png)
+
+Import the [virtual host example](examples/virtual-hosts.json), "deploy" and use the included Postman collection to send a request to `{{BaseURL}}/virtual-hosts`. The example will respond with the contents of the HTTP "Host" header - which is quite boring when used locally, but may principally be used to serve different domains from a single Node-RED instance
 
 ### Multiple Endpoints matching the same URL ###
 
