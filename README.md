@@ -64,7 +64,7 @@ An often needed feature of web applications (especially of application "frontend
 
 Import the [form processing example](examples/form-processing.json), "deploy" and use the included Postman collection to send a request to `{{BaseURL}}/form-processing`. The response sent back will contain several form variables and their values.
 
-Please keep in mind that all form input will be transmitted as text - boolean und numeric input may therefore first have to be converted into `boolean` and `number` values before being processed further
+Please keep in mind that any form input will always be transmitted as text - boolean und numeric input may therefore first have to be converted into `boolean` and `number` values before being processed further
 
 ### File Uploads ###
 
