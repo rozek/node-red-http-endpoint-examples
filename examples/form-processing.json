@@ -1,0 +1,59 @@
+[
+    {
+        "id": "a0cb99c78c0317de",
+        "type": "comment",
+        "z": "4730a3973976294e",
+        "name": "Form Processing (at /form-processing)",
+        "info": "",
+        "x": 830,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "5c23c162fc24aea2",
+        "type": "http response",
+        "z": "4730a3973976294e",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1160,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "c3d4c30f8b61ba9e",
+        "type": "http in",
+        "z": "4730a3973976294e",
+        "name": "",
+        "url": "form-processing",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 780,
+        "y": 940,
+        "wires": [
+            [
+                "8bc1342748eefbfe"
+            ]
+        ]
+    },
+    {
+        "id": "8bc1342748eefbfe",
+        "type": "function",
+        "z": "4730a3973976294e",
+        "name": "create Response",
+        "func": "msg.headers = msg.headers || {}\nmsg.headers['Content-Type'] = 'application/json'\n\nmsg.statusCode = 200 // form contents are already in msg.payload\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 940,
+        "wires": [
+            [
+                "5c23c162fc24aea2"
+            ]
+        ]
+    }
+]
