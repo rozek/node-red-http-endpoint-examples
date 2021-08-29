@@ -115,7 +115,7 @@
         "type": "function",
         "z": "4730a3973976294e",
         "name": "additional Processing",
-        "func": "msg.payload    = 'Success'\nmsg.statusCode = 200\n\nreturn msg;",
+        "func": "msg.payload    = 'Success'\nmsg.statusCode = 200\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
