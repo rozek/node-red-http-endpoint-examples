@@ -196,12 +196,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseURL}}/routing/a/complete/path",
+							"raw": "{{BaseURL}}/routing/any/with/a/complete/path",
 							"host": [
 								"{{BaseURL}}"
 							],
 							"path": [
 								"routing",
+								"any",
+								"with",
 								"a",
 								"complete",
 								"path"
@@ -299,6 +301,86 @@
 			]
 		},
 		{
+			"name": "Form Processing",
+			"item": [
+				{
+					"name": "submit form",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "boolean",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "3.14159265",
+									"type": "text"
+								},
+								{
+									"key": "string",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "hidden",
+									"value": "hidden value",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseURL}}/form-processing",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"form-processing"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "File Uploads",
+			"item": [
+				{
+					"name": "upload file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"contentType": "text/plain",
+									"type": "file",
+									"src": "./examples/file-upload.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseURL}}/file-upload",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"file-upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "HTTP Status Codes",
 			"item": [
 				{
@@ -340,45 +422,6 @@
 			]
 		},
 		{
-			"name": "Error Handling",
-			"item": [
-				{
-					"name": "foreseen Error",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{BaseURL}}/foreseen-error",
-							"host": [
-								"{{BaseURL}}"
-							],
-							"path": [
-								"foreseen-error"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "unforeseen Error",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{BaseURL}}/unforeseen-error",
-							"host": [
-								"{{BaseURL}}"
-							],
-							"path": [
-								"unforeseen-error"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Header Handling",
 			"item": [
 				{
@@ -399,61 +442,6 @@
 							],
 							"path": [
 								"header-handling"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "File Upload",
-			"item": [
-				{
-					"name": "upload file",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "file",
-									"contentType": "text/plain",
-									"type": "file",
-									"src": "./examples/file-upload.txt"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{BaseURL}}/file-upload",
-							"host": [
-								"{{BaseURL}}"
-							],
-							"path": [
-								"file-upload"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Virtual Hosts",
-			"item": [
-				{
-					"name": "retrieve virtual host",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{BaseURL}}/virtual-host",
-							"host": [
-								"{{BaseURL}}"
-							],
-							"path": [
-								"virtual-host"
 							]
 						}
 					},
@@ -510,6 +498,67 @@
 							],
 							"path": [
 								"data-of-type-image-png"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Error Handling",
+			"item": [
+				{
+					"name": "foreseen Error",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/foreseen-error",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"foreseen-error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unforeseen Error",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/unforeseen-error",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"unforeseen-error"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Virtual Hosts",
+			"item": [
+				{
+					"name": "retrieve virtual host",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/virtual-host",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"virtual-host"
 							]
 						}
 					},
