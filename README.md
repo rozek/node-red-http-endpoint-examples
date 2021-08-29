@@ -86,6 +86,14 @@ Besides the actual content (the "body") HTTP requests and responses contain seve
 
 Import the [header handling example](examples/header-handling.json), "deploy" and use the included Postman collection to test: it contains a request with a "custom-header" whose value will be returned when sent to `{{BaseURL}}/header-handling`. Don't forget to inspect the respopnse headers for the custom one.
 
+### Form Processing ###
+
+An often needed feature of web applications (especially of application "frontends") is the submission of "forms". Node-RED is prepared to receive form contents and automatically parses them in order to simplify form processing.
+
+![](examples/form-processing.png)
+
+Import the [form processing example](examples/form-processing.json), "deploy" and use the included Postman collection to send a request to `{{BaseURL}}/form-processing`. The response sent back will contain several form variables and their values.
+
 ### File Uploads ###
 
 A common operation many servers provide is the upload of files. Node-RED supports file uploads out-of-the-box as part of their handling of POST requests.
