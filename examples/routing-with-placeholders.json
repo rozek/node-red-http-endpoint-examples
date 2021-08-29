@@ -84,10 +84,10 @@
         "id": "9967bb236a053ce9",
         "type": "http response",
         "z": "4730a3973976294e",
-        "name": "send Response",
-        "statusCode": "",
+        "name": "",
+        "statusCode": "200",
         "headers": {},
-        "x": 500,
+        "x": 520,
         "y": 780,
         "wires": []
     },
