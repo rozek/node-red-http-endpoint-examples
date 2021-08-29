@@ -50,10 +50,10 @@
         "id": "487be741aedff65c",
         "type": "http response",
         "z": "4730a3973976294e",
-        "name": "send Response",
-        "statusCode": "",
+        "name": "",
+        "statusCode": "200",
         "headers": {},
-        "x": 500,
+        "x": 520,
         "y": 940,
         "wires": []
     },
