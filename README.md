@@ -68,7 +68,7 @@ A common operation many servers provide is the upload of files. Node-RED support
 
 ![](examples/file-upload.png)
 
-Import the [file upload example](examples/header-handling.json), "deploy" and use the included Postman collection to send a request to `{{BaseURL}}/file-upload`. As a "proof" of a successful file upload the response will contain the uploaded file's name and its MIME type.
+Import the [file upload example](examples/file-upload.json), "deploy" and use the included Postman collection to send a request to `{{BaseURL}}/file-upload`. As a "proof" of a successful file upload the response will contain the uploaded file's name and its MIME type.
 
 ### Setting HTTP Status Codes ###
 
